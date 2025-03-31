@@ -61,7 +61,7 @@ class ModelAdmin(BaseModelAdminMixin, ActionModelAdminMixin, BaseModelAdmin):
         media = super().media
         additional_media = forms.Media()
 
-        for filter in self.list_filter:
+        for filter in self.get_list_filter(self.request):
             if (
                 isinstance(filter, (tuple, list))
                 and hasattr(filter[1], "form_class")
